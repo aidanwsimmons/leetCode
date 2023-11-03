@@ -4,14 +4,13 @@
  */
 var maxProfit = function(prices) {
     let maxProfit=0;
-    for(let i=0; i<prices.length; i++){
-        for(let j=i+1; j<prices.length; j++){
-            let profit = prices[j] - prices[i]
-            if(profit > maxProfit){
-                maxProfit = profit;
-            }
+    for(let i=0; i<prices.length-1; i++){
+        let maxFuturePrice = Math.max(...prices.slice(i+1))
+        let profit = maxFuturePrice - prices[i]
+        if(profit> maxProfit){
+            maxProfit = profit
         }
-    }
+        }
     return maxProfit;
 };
 
