@@ -26,19 +26,42 @@
 // 1 <= s.length <= 104
 // s consists of parentheses only '()[]{}'.
 
+// /**
+//  * @param {string} s
+//  * @return {boolean}
+//  */
+// var isValid = function(s) {
+//     if(s.length % 2 !== 0){
+//         return false
+//     }
+//     let pairs = ['()', '[]', '{}']
+//     for(let i=0; i<s.length; i+=2){
+//         if(pairs.indexOf(s.slice(i, i+2)) === -1){
+//             return false
+//         }
+//     }
+//     return true
+// };
 /**
  * @param {string} s
  * @return {boolean}
  */
 var isValid = function(s) {
-    if(s.length % 2 !== 0){
-        return false
-    }
-    let pairs = ['()', '[]', '{}']
-    for(let i=0; i<s.length; i+=2){
-        if(pairs.indexOf(s.slice(i, i+2)) === -1){
+    let stack = []
+    for(let c of s){
+        if(c === '('){
+            stack.push(')')
+        } else if(c === '{'){
+            stack.push('}')
+        } else if(c === '['){
+            stack.push(']')
+        } 
+        else if(stack.pop() !== c){
             return false
         }
     }
+    if(stack.length){
+        return false
+    }
     return true
-};
+}
