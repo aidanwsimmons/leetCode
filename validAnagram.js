@@ -14,6 +14,14 @@ var isAnagram = function(s, t) {
 
     return false
 };
+//ALTERANTE SOLUTION
+// const isAnagram = (s, t) => {
+//     if( t.length !== s.length ) return false
+
+//     t.split('').forEach(char => s = s.replace(char, ""));
+
+//     return !s.length
+// };
 
 
 // Given two strings s and t, return true if t is an anagram of s, and false otherwise.

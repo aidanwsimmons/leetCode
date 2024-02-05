@@ -1,17 +1,34 @@
+// /**
+//  * @param {number[]} prices
+//  * @return {number}
+//  */
+// var maxProfit = function(prices) {
+//     let maxProfit=0;
+//     for(let i=0; i<prices.length-1; i++){
+//         let maxFuturePrice = Math.max(...prices.slice(i+1))
+//         let profit = maxFuturePrice - prices[i]
+//         if(profit> maxProfit){
+//             maxProfit = profit
+//         }
+//         }
+//     return maxProfit;
+// };
 /**
  * @param {number[]} prices
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let maxProfit=0;
-    for(let i=0; i<prices.length-1; i++){
-        let maxFuturePrice = Math.max(...prices.slice(i+1))
-        let profit = maxFuturePrice - prices[i]
-        if(profit> maxProfit){
-            maxProfit = profit
+    let maxProfit=0
+    let minPrice = prices[0]
+    for(let sellIndex = 1; sellIndex<prices.length; sellIndex++){
+        let sellPrice = prices[sellIndex]
+        let profit = sellPrice - minPrice
+        maxProfit = Math.max(maxProfit, profit)
+        if(sellPrice<minPrice){
+            minPrice = sellPrice
         }
-        }
-    return maxProfit;
+    }
+    return maxProfit
 };
 
 // You are given an array prices where prices[i] is the price of a given stock on the ith day.
