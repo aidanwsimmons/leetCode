@@ -46,3 +46,25 @@ var countPairs = function(nums, target) {
     }
     return result
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var countPairs = function(nums, target) {
+    nums = nums.sort((a, b) => a - b)
+    let left = 0
+    let right = nums.length - 1
+    let result = 0
+    while(left < right){
+        if(nums[left] + nums[right] < target){
+            result += right-left
+            left++
+        }
+        else{
+            right--
+        }
+    }
+    return result
+};
