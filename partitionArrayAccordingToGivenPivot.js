@@ -53,3 +53,31 @@ var pivotArray = function(nums, pivot) {
     })
     return less.concat(equal).concat(more)
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} pivot
+ * @return {number[]}
+ */
+var pivotArray = function(nums, pivot) {
+    let result = new Array(nums.length)
+    let less = 0
+    let more = nums.length - 1
+
+    for(let i = 0, j = nums.length - 1; i < nums.length; i++, j--){
+        if(nums[i] < pivot){
+            result[less] = nums[i]
+            less++
+        }
+        if(nums[j] > pivot){
+            result[more] = nums[j]
+            more--
+        }
+    }
+
+    for(let i = less; i <= more; i++){
+        result[i] = pivot
+    }
+
+    return result
+};
