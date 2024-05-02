@@ -47,3 +47,30 @@ var isAnagram = function(s, t) {
  
 
 // Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isAnagram = function(s, t) {
+    if(s.length != t.length) return false
+
+    let map = {}
+
+    for(let char of s){
+        map[char] = (map[char] || 0) + 1
+    }
+
+    for(let char of t){
+        if(!map[char]){
+            return false
+        }
+        else{
+            map[char]--
+            if(map[char] == 0) delete map[char]
+        }
+    }
+
+    return Object.values(map).length == 0
+};
