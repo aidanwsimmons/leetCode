@@ -37,3 +37,32 @@ var isPalindrome = function(s) {
     }
     return true
 };
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function(s) {
+    s = s.toLowerCase()
+    console.log(s)
+    let left = 0
+    let right = s.length - 1
+    let letters = 'abcdefghijklmnopqrstuvwxyz'
+    
+    while(left < right){
+        while(letters.indexOf(s[left]) == -1  && left < s.length){
+            left++
+        }
+        while(letters.indexOf(s[right]) == -1  && right > 0){
+            right--
+        }
+        if(s[left] !== s[right]){
+            console.log(left, right)
+            return false
+        }
+        left++
+        right--
+    }
+    
+    return true
+};
